@@ -8,7 +8,7 @@ function Edit() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/blogs/${id}`)
+        axios.get(`https://blog-backend-axvl.onrender.com/blogs/${id}`)
             .then(res => {
                 const blog = res.data[0];
                 setFormData({
@@ -20,6 +20,7 @@ function Edit() {
             .catch(err => console.log(err));
     }, [id]);
 
+    // Ensure the handleChange function is correctly defined here
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -27,7 +28,7 @@ function Edit() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8081/blogs/${id}`, formData)
+        axios.put(`https://blog-backend-axvl.onrender.com/blogs/${id}`, formData)
             .then(() => {
                 alert("Blog post updated successfully!");
                 navigate("/");
