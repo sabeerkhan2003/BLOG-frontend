@@ -13,7 +13,7 @@ function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/blogs', formData)
+        axios.post('https://blog-backend-axvl.onrender.com/blogs', formData)
             .then(() => {
                 alert("Blog post created successfully!");
                 navigate("/");
