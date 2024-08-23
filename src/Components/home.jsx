@@ -7,18 +7,18 @@ function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOrder, setSortOrder] = useState({ key: '', direction: '' });
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
     useEffect(() => {
-        axios.get("http://localhost:8081/")
+        axios.get("https://blog-backend-axvl.onrender.com/blogs")
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, []);
-
+    
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this blog post?");
         if (confirmDelete) {
-            axios.delete(`http://localhost:8081/blogs/${id}`)
+            axios.delete(`https://blog-backend-axvl.onrender.com/blogs/${id}`)
                 .then(() => {
                     setData(data.filter(item => item.ID !== id));
                     alert("Blog post deleted successfully!");
